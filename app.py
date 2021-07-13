@@ -30,7 +30,7 @@ def predict(model_path):
     data_format=None,
     validation_split=0.0)
 
-    data = test_gen.flow_from_directory('test_set_png',target_size=(224, 224),
+    data = test_gen.flow_from_directory('test_set',target_size=(224, 224),
         color_mode="rgb",
         classes=None,
         class_mode=None,
@@ -55,9 +55,9 @@ if __name__ == '__main__':
     uploaded_file = st.file_uploader("Upload the Keras Model (.h5 extension) trained on Chest X-Ray Dataset.....", type= ["h5"])
 
     if uploaded_file is not None:
-        with open(os.path.join("streamlit/tempDir/model/",uploaded_file.name),"wb") as f:
+        with open(os.path.join("tempDir/model/",uploaded_file.name),"wb") as f:
             f.write(uploaded_file.getbuffer())
-        model_path = os.path.join("streamlit/tempDir/model/",uploaded_file.name)
+        model_path = os.path.join("tempDir/model/",uploaded_file.name)
     
 
     if st.button('Evaluate Model'):
