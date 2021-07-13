@@ -1,2 +1,1 @@
-# chestXRayModelTesting
 # XRayModelTesting
