@@ -52,7 +52,7 @@ if __name__ == '__main__':
     st.set_page_config(layout="centered")
     st.markdown("<h1 style='text-align: center; color: white;'>Chest X-Ray Image Classification</h1>", unsafe_allow_html=True)
 
-    uploaded_file = st.file_uploader("Upload the Keras Model (.h5 extension) trained on Chest X-Ray Dataset.....", type= ["h5"])
+    uploaded_file = st.file_uploader("Upload the Keras Model (.h5 extension) trained on Chest X-Ray Dataset.....", type= ["h5", "hdf5"])
 
     if uploaded_file is not None:
         with open(os.path.join("tempDir/model/",uploaded_file.name),"wb") as f:
