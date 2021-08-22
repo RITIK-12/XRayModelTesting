@@ -11,10 +11,6 @@ class_names = ["COVID-19", "Normal", "Pneumonia"]
 
 def predict(model_path):
     
-    wget.download(st.secrets["link"], 'test_set.zip')
-    with zipfile.ZipFile("test_set.zip","r") as zip_ref:
-        zip_ref.extractall("test_set")
-    
     test_gen =ImageDataGenerator(featurewise_center=False, samplewise_center=False,
     featurewise_std_normalization=False,
     samplewise_std_normalization=False,
@@ -59,6 +55,9 @@ if __name__ == '__main__':
     st.markdown("<h1 style='text-align: center; color: white;'>Chest X-Ray Image Classification</h1>", unsafe_allow_html=True)
 
     uploaded_file = st.file_uploader("Upload the Keras Model (.h5 extension) trained on Chest X-Ray Dataset.....", type= ["h5", "hdf5"])
+    wget.download(st.secrets["link"], 'test_set.zip')
+    with zipfile.ZipFile("test_set.zip","r") as zip_ref:
+        zip_ref.extractall("test_set")
 
     if uploaded_file is not None:
         with open(os.path.join("tempDir/model/",uploaded_file.name),"wb") as f:
