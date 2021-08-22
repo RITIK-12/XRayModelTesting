@@ -3,11 +3,15 @@ import tensorflow as tf
 import os
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from sklearn.metrics import accuracy_score
-
+import wget
+import zipfile
 class_names = ["COVID-19", "Normal", "Pneumonia"]
 
-
 @st.cache(suppress_st_warning=True)
+wget.download($link, 'test_set.zip')
+with zipfile.ZipFile("test_set.zip","r") as zip_ref:
+    zip_ref.extractall("test_set")
+
 def predict(model_path):
     test_gen =ImageDataGenerator(featurewise_center=False, samplewise_center=False,
     featurewise_std_normalization=False,
