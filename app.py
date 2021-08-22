@@ -10,7 +10,7 @@ class_names = ["COVID-19", "Normal", "Pneumonia"]
 @st.cache(suppress_st_warning=True)
 
 def get_data():
-    wget.download(link, 'test_set.zip')
+    wget.download(st.secrets["link"], 'test_set.zip')
     with zipfile.ZipFile("test_set.zip","r") as zip_ref:
         zip_ref.extractall("test_set")
     return test_set
